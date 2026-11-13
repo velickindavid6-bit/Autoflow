@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050816">
+  <title>Регистрация — AutoFlow</title>
+  <meta name="description" content="Создайте аккаунт AutoFlow и начните автоматизировать свои задачи.">
+  <script src="js-flag.js"></script>
+  <script src="demo-api.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body class="auth">
+
+  <!-- Фон: дрейфующие светящиеся пятна с переливом оттенков -->
+  <div class="bg" aria-hidden="true">
+    <i class="bg__blob bg__blob--1"></i>
+    <i class="bg__blob bg__blob--2"></i>
+    <i class="bg__blob bg__blob--3"></i>
+  </div>
+
+  <header class="auth-header">
+    <a href="index.html" class="logo" aria-label="AutoFlow — на главную">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#b25cff"/>
+            <stop offset="1" stop-color="#27c4ff"/>
+          </linearGradient>
+        </defs>
+        <path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#lg)"/>
+      </svg>
+      <span>AutoFlow</span>
+    </a>
+
+    <a href="login.html" class="switch">
+      <small>Уже есть аккаунт?</small>
+      <span>Войти
+        <svg viewBox="0 0 24 12" width="18" height="10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h21M17 1l5 5-5 5"/></svg>
+      </span>
+    </a>
+  </header>
+
+  <main class="auth-main">
+    <section class="auth-card" id="card">
+
+      <!-- Анимированный значок профиля -->
+      <div class="hero-icon" aria-hidden="true">
+        <div class="hero-icon__tilt">
+          <svg class="hero-icon__svg" viewBox="0 0 360 250">
+            <defs>
+              <linearGradient id="hiRing" gradientUnits="userSpaceOnUse" x1="30" y1="0" x2="330" y2="0">
+                <stop offset="0" stop-color="#c04bff"/>
+                <stop offset=".5" stop-color="#6a6cff"/>
+                <stop offset="1" stop-color="#27d6ff"/>
+              </linearGradient>
+              <linearGradient id="hiCard" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4aa8ff"/>
+                <stop offset=".55" stop-color="#2a56e8"/>
+                <stop offset="1" stop-color="#1b2fb8"/>
+              </linearGradient>
+              <linearGradient id="hiGloss" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="hiAva" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#4af7ff"/>
+                <stop offset="1" stop-color="#1aa8ff"/>
+              </linearGradient>
+              <radialGradient id="hiGlow">
+                <stop offset="0" stop-color="#4f7bff" stop-opacity=".6"/>
+                <stop offset="1" stop-color="#4f7bff" stop-opacity="0"/>
+              </radialGradient>
+              <clipPath id="hiClip"><rect x="100" y="40" width="160" height="160" rx="30"/></clipPath>
+              <filter id="hiBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+
+            <ellipse class="hi-glow" cx="180" cy="130" rx="160" ry="105" fill="url(#hiGlow)"/>
+
+            <!-- орбиты: задняя часть -->
+            <g transform="rotate(-12 180 140)" fill="none" stroke-linecap="round">
+              <path d="M30 140A150 48 0 0 1 330 140" stroke="url(#hiRing)" stroke-opacity=".35" stroke-width="3"/>
+              <path class="orbit" pathLength="100" d="M30 140A150 48 0 0 1 330 140" stroke="url(#hiRing)" stroke-width="5" filter="url(#hiBlur)"/>
+              <path class="orbit orbit--b" pathLength="100" d="M30 140A150 48 0 0 1 330 140" stroke="#fff" stroke-opacity=".9" stroke-width="2"/>
+            </g>
+
+            <!-- карточка -->
+            <g class="px" style="--d:8">
+              <g transform="rotate(-8 180 120)">
+                <g class="bob">
+                  <rect x="100" y="40" width="160" height="160" rx="30" fill="url(#hiCard)" stroke="#7fd0ff" stroke-opacity=".85" stroke-width="2"/>
+                  <rect x="107" y="47" width="146" height="146" rx="24" fill="none" stroke="#fff" stroke-opacity=".16"/>
+                  <path d="M100 70a30 30 0 0 1 30-30h100a30 30 0 0 1 30 30v22c-50 18-110 18-160 0z" fill="url(#hiGloss)"/>
+                  <circle cx="180" cy="112" r="47" fill="#35e8ff" fill-opacity=".16" stroke="#4af7ff" stroke-opacity=".7" stroke-width="2"/>
+                  <circle cx="180" cy="98" r="15" fill="url(#hiAva)"/>
+                  <path d="M155 140c0-14 11-22 25-22s25 8 25 22z" fill="url(#hiAva)"/>
+                  <g clip-path="url(#hiClip)"><rect class="sheen" x="90" y="30" width="34" height="180" fill="#fff" fill-opacity=".2"/></g>
+                </g>
+              </g>
+            </g>
+
+            <!-- орбиты: передняя часть -->
+            <g transform="rotate(-12 180 140)" fill="none" stroke-linecap="round">
+              <path d="M30 140A150 48 0 0 0 330 140" stroke="url(#hiRing)" stroke-opacity=".5" stroke-width="3"/>
+              <path class="orbit orbit--c" pathLength="100" d="M30 140A150 48 0 0 0 330 140" stroke="url(#hiRing)" stroke-width="5" filter="url(#hiBlur)"/>
+              <path class="orbit orbit--d" pathLength="100" d="M30 140A150 48 0 0 0 330 140" stroke="#fff" stroke-opacity=".95" stroke-width="2"/>
+              <path d="M62 152A118 34 0 0 0 298 152" stroke="url(#hiRing)" stroke-opacity=".45" stroke-width="2.5"/>
+            </g>
+
+            <!-- значки -->
+            <g class="px" style="--d:22">
+              <g class="bob bob--2">
+                <g transform="translate(250 18) rotate(8 22 22)">
+                  <rect width="46" height="46" rx="13" fill="#10256e" fill-opacity=".85" stroke="#4fc3ff" stroke-opacity=".85" stroke-width="1.6"/>
+                  <path transform="translate(11 11)" d="M12 2 20 5v6c0 4.7-3.2 8.4-8 10-4.8-1.6-8-5.3-8-10V5z" fill="url(#hiAva)"/>
+                  <path transform="translate(11 11)" d="M8.5 11.5 11 14l4.5-5" fill="none" stroke="#0b1a5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </g>
+            </g>
+            <g class="px" style="--d:26">
+              <g class="bob bob--3">
+                <g transform="translate(262 162) rotate(-6 22 22)">
+                  <rect width="46" height="46" rx="13" fill="#10256e" fill-opacity=".85" stroke="#4fc3ff" stroke-opacity=".85" stroke-width="1.6"/>
+                  <path transform="translate(10 10)" d="M14 2 5 15h6l-1 9 9-13h-6z" fill="url(#hiAva)"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- искры -->
+            <circle class="spark" cx="62" cy="62" r="2.5" fill="#7fe4ff"/>
+            <circle class="spark spark--2" cx="318" cy="118" r="2" fill="#c68cff"/>
+            <circle class="spark spark--3" cx="44" cy="190" r="2" fill="#7fe4ff"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="title">
+        <span class="line" style="--d:.15s"><span>Добро пожаловать</span></span>
+        <span class="line" style="--d:.28s"><span>в <em class="grad-text">AutoFlow</em></span></span>
+      </h1>
+      <p class="sub rise" style="--d:.4s">Зарегистрируйтесь и начните использовать все возможности платформы.</p>
+
+      <div class="form-area">
+        <form id="regForm" novalidate>
+
+          <div class="row rise" style="--d:.5s">
+            <div class="field">
+              <svg class="field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zm0 2c-4.4 0-8 2.2-8 5v2h16v-2c0-2.8-3.6-5-8-5z" fill="currentColor"/></svg>
+              <input id="name" name="name" type="text" placeholder=" " autocomplete="name" required aria-describedby="name-err">
+              <label for="name">Имя и фамилия</label>
+            </div>
+            <p class="err" id="name-err" role="alert"></p>
+          </div>
+
+          <div class="row rise" style="--d:.58s">
+            <div class="field">
+              <svg class="field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v.4l-10 6.6L2 6.4V6a1 1 0 0 1 1-1zm19 3.8V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V8.8l10 6.6z" fill="currentColor"/></svg>
+              <input id="email" name="email" type="email" placeholder=" " autocomplete="email" required aria-describedby="email-err">
+              <label for="email">Email</label>
+            </div>
+            <p class="err" id="email-err" role="alert"></p>
+          </div>
+
+          <div class="row rise" style="--d:.66s">
+            <div class="field">
+              <svg class="field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 2.5h2.8l1.4 4.2-2 1.5a12 12 0 0 0 5 5l1.5-2 4.2 1.4v2.8a2.2 2.2 0 0 1-2.4 2.2C10.4 17 5 11.6 4.4 4.9A2.2 2.2 0 0 1 6.6 2.5z" fill="currentColor"/></svg>
+              <input id="phone" name="phone" type="tel" placeholder=" " autocomplete="tel" inputmode="tel" required aria-describedby="phone-err">
+              <label for="phone">Телефон</label>
+            </div>
+            <p class="err" id="phone-err" role="alert"></p>
+          </div>
+
+          <div class="row rise" style="--d:.74s">
+            <div class="field">
+              <svg class="field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1zm2 0h6V8a3 3 0 0 0-6 0zm3 4a1.6 1.6 0 0 0-.8 3v1.6h1.6V17a1.6 1.6 0 0 0-.8-3z" fill="currentColor"/></svg>
+              <input id="password" name="password" type="password" placeholder=" " autocomplete="new-password" required minlength="8" aria-describedby="password-err">
+              <label for="password">Пароль</label>
+              <button type="button" class="eye" aria-label="Показать пароль" aria-pressed="false" data-target="password">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path class="eye__open" d="M12 5c5 0 8.6 3.6 10 7-1.4 3.4-5 7-10 7S3.400 15.400 2 12c1.400-3.400 5-7 10-7zm0 3.500a3.500 3.500 0 1 0 0 7 3.500 3.500 0 0 0 0-7z" fill="currentColor"/><path class="eye__slash" d="M4 4l16 16" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <div class="meter" id="meter" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <em id="meterText"></em>
+            </div>
+            <p class="err" id="password-err" role="alert"></p>
+          </div>
+
+          <div class="row rise" style="--d:.82s">
+            <div class="field">
+              <svg class="field__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1zm2 0h6V8a3 3 0 0 0-6 0zm3 4a1.6 1.6 0 0 0-.8 3v1.6h1.6V17a1.6 1.6 0 0 0-.8-3z" fill="currentColor"/></svg>
+              <input id="confirm" name="confirm" type="password" placeholder=" " autocomplete="new-password" required aria-describedby="confirm-err">
+              <label for="confirm">Повторите пароль</label>
+              <button type="button" class="eye" aria-label="Показать пароль" aria-pressed="false" data-target="confirm">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path class="eye__open" d="M12 5c5 0 8.6 3.6 10 7-1.4 3.4-5 7-10 7S3.400 15.400 2 12c1.400-3.400 5-7 10-7zm0 3.500a3.500 3.500 0 1 0 0 7 3.500 3.500 0 0 0 0-7z" fill="currentColor"/><path class="eye__slash" d="M4 4l16 16" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            <p class="err" id="confirm-err" role="alert"></p>
+          </div>
+
+          <button type="submit" class="btn-submit rise" style="--d:.92s">
+            <span class="btn-submit__label">Зарегистрироваться
+              <svg viewBox="0 0 24 12" width="22" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h21M17 1l5 5-5 5"/></svg>
+            </span>
+            <span class="btn-submit__spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <div class="or rise" style="--d:1s"><span>или</span></div>
+
+        <button type="button" class="btn-google rise" style="--d:1.06s" id="googleBtn">
+          <svg viewBox="0 0 48 48" width="26" height="26" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.500c3.540 0 6.710 1.220 9.210 3.600l6.850-6.850C35.900 2.380 30.470 0 24 0 14.620 0 6.510 5.380 2.560 13.220l7.980 6.190C12.430 13.720 17.740 9.500 24 9.500z"/>
+            <path fill="#4285F4" d="M46.980 24.550c0-1.570-.15-3.090-.38-4.550H24v9.020h12.940c-.58 2.960-2.260 5.480-4.780 7.180l7.730 6c4.510-4.180 7.090-10.360 7.090-17.650z"/>
+            <path fill="#FBBC05" d="M10.530 28.590c-.48-1.450-.76-2.990-.76-4.590s.27-3.140.76-4.590l-7.980-6.190C.92 16.460 0 20.120 0 24c0 3.880.92 7.540 2.560 10.780l7.970-6.190z"/>
+            <path fill="#34A853" d="M24 48c6.480 0 11.930-2.130 15.890-5.810l-7.730-6c-2.150 1.450-4.920 2.300-8.160 2.300-6.260 0-11.570-4.220-13.470-9.910l-7.980 6.190C6.510 42.620 14.620 48 24 48z"/>
+          </svg>
+          Продолжить с Google
+        </button>
+
+        <p class="terms rise" style="--d:1.14s">
+          Нажимая «Зарегистрироваться», вы соглашаетесь с <a href="terms.html" target="_blank" rel="noopener">Условиями использования</a> и <a href="privacy.html" target="_blank" rel="noopener">Политикой конфиденциальности</a>.
+        </p>
+      </div>
+
+      <!-- Состояние «успех» -->
+      <div class="success" id="success" hidden>
+        <svg class="success__check" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="34" fill="none" stroke="url(#hiRing)" stroke-width="3"/>
+          <path d="M25 41l10 10 20-22" fill="none" stroke="#7fe4ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h2>Аккаунт создан!</h2>
+        <p id="successText">Добро пожаловать в AutoFlow.</p>
+        <a href="dashboard.html" class="btn-submit btn-submit--link"><span class="btn-submit__label">В личный кабинет</span></a>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="auth.js"></script>
+</body>
+</html>

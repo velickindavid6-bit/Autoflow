@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050816">
+  <title>Личный кабинет — AutoFlow</title>
+  <meta name="robots" content="noindex">
+  <script src="js-flag.js"></script>
+  <script src="demo-api.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body class="app">
+
+  <div class="bg" aria-hidden="true">
+    <i class="bg__blob bg__blob--1"></i>
+    <i class="bg__blob bg__blob--2"></i>
+  </div>
+
+  <div class="shell">
+
+    <!-- ============ БОКОВОЕ МЕНЮ ============ -->
+    <aside class="side" id="side" aria-label="Меню кабинета">
+      <a href="index.html" class="logo" aria-label="AutoFlow — на сайт">
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b25cff"/><stop offset="1" stop-color="#27c4ff"/></linearGradient></defs>
+          <path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#lg)"/>
+        </svg>
+        <span>AutoFlow</span>
+      </a>
+
+      <nav class="side__nav">
+        <a href="#home" data-view="home" class="active"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Главная</a>
+        <a href="#tasks" data-view="tasks"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h9"/></svg>Задачи<b class="count" id="navTasks"></b></a>
+        <a href="#automations" data-view="automations"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>Автоматизация</a>
+        <a href="#notifications" data-view="notifications"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>Уведомления<b class="count" id="navNotes"></b></a>
+        <a href="#billing" data-view="billing"><svg viewBox="0 0 24 24"><path d="M3 7h18v12H3zM3 11h18M7 15h3"/></svg>Тариф</a>
+        <a href="#settings" data-view="settings"><svg viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg>Настройки</a>
+      </nav>
+
+      <div class="side__bottom">
+        <a href="index.html" class="side__site"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>На сайт</a>
+        <div class="side__user">
+          <span class="avatar" id="userAvatar">А</span>
+          <div class="side__who"><strong id="userName">—</strong><small id="userEmail">—</small></div>
+          <button class="icon-btn" id="logoutBtn" aria-label="Выйти" title="Выйти"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
+        </div>
+      </div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <!-- ============ ОСНОВНАЯ ЧАСТЬ ============ -->
+    <div class="main">
+      <header class="top">
+        <button class="icon-btn burger" id="menuBtn" aria-label="Открыть меню" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <h1 id="viewTitle">Главная</h1>
+        <span class="demo-badge" title="Сервис в разработке: часть функций работает в тестовом режиме">Бета</span>
+        <div class="top__right">
+          <a href="#billing" class="plan-chip" id="planChip" title="Ваш тариф">Старт</a>
+          <button class="icon-btn bell" id="bellBtn" aria-label="Уведомления">
+            <svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10 21a2 2 0 0 0 4 0"/></svg>
+            <b id="bellCount" hidden>0</b>
+          </button>
+          <span class="avatar avatar--sm" id="topAvatar">А</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <div class="banner" id="verifyBanner" hidden role="status">
+          <span class="banner__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg></span>
+          <div class="banner__text"><strong>Подтвердите email</strong><span>Мы отправили письмо на <b id="bannerEmail"></b>. Перейдите по ссылке из письма.</span></div>
+          <button class="btn btn--ghost" id="resendVerify" type="button">Отправить ещё раз</button>
+        </div>
+
+        <!-- ---------- Главная ---------- -->
+        <section class="view active" id="view-home" aria-labelledby="viewTitle">
+          <div class="hello">
+            <div>
+              <h2>Привет, <span id="helloName">друг</span>! <span class="wave">👋</span></h2>
+              <p>Ваши задачи и автоматизации работают</p>
+            </div>
+            <div class="hello__actions">
+              <button class="btn btn--primary" data-go="tasks" data-focus="taskTitle"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Новая задача</button>
+              <button class="btn btn--ghost" id="quickAuto"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>Автоматизация</button>
+            </div>
+          </div>
+
+          <div class="stats" id="stats"></div>
+
+          <div class="grid2">
+            <div class="panel">
+              <div class="panel__head"><h3>Выполнено за неделю</h3><span class="muted" id="weekTotal"></span><a href="#tasks" class="panel__link">Все задачи →</a></div>
+              <div class="chart" id="chart"></div>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><h3>Последние действия</h3><a href="#notifications" class="panel__link">Уведомления →</a></div>
+              <ul class="feed" id="feed"></ul>
+            </div>
+          </div>
+
+          <div class="panel tg-panel" id="tgPanel">
+            <div class="tg-panel__icon"><svg viewBox="0 0 24 24"><path d="M21.5 3.2 2.6 10.5c-1 .4-.9 1.2-.2 1.4l4.8 1.5 1.9 5.8c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3-14.6c.3-1.2-.4-1.8-1.2-1.4z" fill="#fff"/></svg></div>
+            <div class="tg-panel__text">
+              <h3>Telegram-бот</h3>
+              <p class="js-tg-text">Подключите бота, чтобы получать уведомления прямо в Telegram.</p>
+            </div>
+            <button class="btn btn--primary js-tg-btn">Подключить</button>
+          </div>
+        </section>
+
+        <!-- ---------- Задачи ---------- -->
+        <section class="view" id="view-tasks">
+          <form class="panel task-form" id="taskForm" autocomplete="off">
+            <input id="taskTitle" type="text" maxlength="120" placeholder="Что нужно сделать?" aria-label="Название задачи" required>
+            <select id="taskPrio" aria-label="Приоритет">
+              <option value="mid">Средний</option>
+              <option value="high">Высокий</option>
+              <option value="low">Низкий</option>
+            </select>
+            <input id="taskDue" type="date" aria-label="Срок">
+            <button type="submit" class="btn btn--primary"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Добавить</button>
+          </form>
+
+          <div class="filters" id="taskFilters" role="tablist">
+            <button class="chip active" data-filter="all">Все <b></b></button>
+            <button class="chip" data-filter="active">Активные <b></b></button>
+            <button class="chip" data-filter="done">Выполненные <b></b></button>
+          </div>
+
+          <ul class="tasks" id="taskList"></ul>
+          <p class="empty" id="taskEmpty" hidden>Здесь пока пусто. Добавьте первую задачу выше ✨</p>
+        </section>
+
+        <!-- ---------- Автоматизация ---------- -->
+        <section class="view" id="view-automations">
+          <div class="toolbar">
+            <p class="muted">Правило срабатывает само, когда происходит событие. Попробуйте создать задачу или выполнить её, и сработают включённые правила.</p>
+            <span class="usage-pill" id="autoUsage"></span>
+            <button class="btn btn--primary" id="newAuto"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Создать</button>
+          </div>
+          <div class="autos" id="autoGrid"></div>
+        </section>
+
+        <!-- ---------- Уведомления ---------- -->
+        <section class="view" id="view-notifications">
+          <div class="toolbar">
+            <p class="muted" id="noteSummary"></p>
+            <div class="toolbar__btns">
+              <button class="btn btn--ghost" id="markAll">Прочитать все</button>
+              <button class="btn btn--ghost" id="clearNotes">Очистить</button>
+            </div>
+          </div>
+          <ul class="notes" id="noteList"></ul>
+          <p class="empty" id="noteEmpty" hidden>Уведомлений нет. Всё спокойно 🌙</p>
+        </section>
+
+        
+        <!-- ---------- Тариф ---------- -->
+        <section class="view" id="view-billing">
+          <div class="panel plan-now" id="planNow"></div>
+          <div class="demo-note" id="billingNote" hidden role="note"></div>
+          <div class="plan-grid" id="planGrid"></div>
+          <div class="panel">
+            <div class="panel__head"><h3>История платежей</h3></div>
+            <ul class="orders" id="orderList"></ul>
+            <p class="empty" id="orderEmpty" hidden>Платежей пока нет</p>
+          </div>
+        </section>
+
+        <!-- ---------- Настройки ---------- -->
+        <section class="view" id="view-settings">
+          <div class="grid2">
+            <form class="panel" id="profileForm" novalidate>
+              <div class="panel__head"><h3>Профиль</h3></div>
+              <label class="fld"><span>Имя и фамилия</span><input id="setName" type="text" autocomplete="name" required></label>
+              <label class="fld"><span>Email</span><input id="setEmail" type="email" disabled></label>
+              <label class="fld"><span>Телефон</span><input id="setPhone" type="tel" autocomplete="tel"></label>
+              <p class="fld-err" id="profileErr" role="alert"></p>
+              <button class="btn btn--primary" type="submit">Сохранить</button>
+            </form>
+
+            <div class="panel">
+              <div class="panel__head"><h3>Уведомления</h3></div>
+              <label class="row-switch"><span><strong>Telegram</strong><small>Присылать события в бота</small></span>
+                <span class="tgl"><input type="checkbox" id="prefTg"><i></i></span></label>
+              <label class="row-switch"><span><strong>Email</strong><small>Дублировать на почту</small></span>
+                <span class="tgl"><input type="checkbox" id="prefEmail"><i></i></span></label>
+
+              <div class="divider"></div>
+              <div class="panel__head"><h3>Telegram-бот</h3></div>
+              <p class="muted js-tg-text" style="margin-bottom:14px"></p>
+              <div class="tg-pending" id="tgPending" hidden>
+                <a class="btn btn--primary" id="tgOpen" href="https://t.me/" target="_blank" rel="noopener noreferrer">Открыть в Telegram</a>
+                <p class="muted">Нажмите «Старт» в Telegram и подтвердите привязку кнопкой «Да». Ссылка действует <b id="tgLeft">10:00</b>.</p>
+                <p class="muted">Не открывается? Отправьте боту: <code id="tgCmd"></code></p>
+              </div>
+              <div class="toolbar__btns">
+                <button class="btn btn--primary js-tg-btn">Подключить</button>
+                <button class="btn btn--ghost" id="testTg">Отправить тест</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" id="securityPanel">
+            <div class="panel__head"><h3>Безопасность</h3><span class="pill" id="emailPill"></span></div>
+            <p class="muted" style="margin-bottom:18px">Смена пароля завершит вход на всех остальных устройствах.</p>
+            <form id="pwForm" class="pw-grid" novalidate autocomplete="off">
+              <label class="fld"><span>Текущий пароль</span><input id="pwCurrent" type="password" autocomplete="current-password" required></label>
+              <label class="fld"><span>Новый пароль</span><input id="pwNew" type="password" autocomplete="new-password" required></label>
+              <label class="fld"><span>Повторите новый пароль</span><input id="pwNew2" type="password" autocomplete="new-password" required></label>
+              <p class="fld-err" id="pwErr" role="alert"></p>
+              <div><button class="btn btn--primary" type="submit">Сменить пароль</button></div>
+            </form>
+          </div>
+
+          <div class="panel danger">
+            <div class="panel__head"><h3>Данные аккаунта</h3></div>
+            <p class="muted">Можно вернуть образцы данных (ваши задачи, автоматизации и уведомления будут удалены) или удалить аккаунт вместе со всеми данными. Удаление необратимо.</p>
+            <div class="toolbar__btns" style="margin-top:16px">
+              <button class="btn btn--ghost" id="resetBtn">Вернуть образцы данных</button>
+              <button class="btn btn--danger" id="deleteBtn">Удалить аккаунт</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Окно создания автоматизации -->
+  <dialog id="autoDialog" aria-labelledby="autoDialogTitle">
+    <form method="dialog" id="autoForm" novalidate>
+      <h3 id="autoDialogTitle">Новая автоматизация</h3>
+      <label class="fld"><span>Название</span><input id="autoName" type="text" maxlength="60" placeholder="Например: Отчёт по пятницам" required></label>
+      <label class="fld"><span>Когда (триггер)</span>
+        <select id="autoTrigger">
+          <option>Новая задача создана</option>
+          <option>Задача выполнена</option>
+          <option>Каждый день в 09:00</option>
+          <option>Приходит новое письмо</option>
+        </select></label>
+      <label class="fld"><span>Что сделать (действие)</span>
+        <select id="autoAction">
+          <option>Отправить уведомление в Telegram</option>
+          <option>Создать задачу</option>
+          <option>Отправить email</option>
+          <option>Записать в журнал</option>
+        </select></label>
+      <p class="fld-err" id="autoErr" role="alert"></p>
+      <div class="dialog__btns">
+        <button type="button" class="btn btn--ghost" id="autoCancel">Отмена</button>
+        <button type="submit" class="btn btn--primary">Создать</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

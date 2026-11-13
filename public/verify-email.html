@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050816">
+  <title>Подтверждение email — AutoFlow</title>
+  <meta name="description" content="Подтверждение адреса электронной почты в AutoFlow.">
+  <script src="/js-flag.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/auth.css">
+</head>
+<body class="auth">
+
+  <!-- Фон: дрейфующие светящиеся пятна с переливом оттенков -->
+  <div class="bg" aria-hidden="true">
+    <i class="bg__blob bg__blob--1"></i>
+    <i class="bg__blob bg__blob--2"></i>
+    <i class="bg__blob bg__blob--3"></i>
+  </div>
+
+  <header class="auth-header">
+    <a href="/" class="logo" aria-label="AutoFlow — на главную">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#b25cff"/>
+            <stop offset="1" stop-color="#27c4ff"/>
+          </linearGradient>
+        </defs>
+        <path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#lg)"/>
+      </svg>
+      <span>AutoFlow</span>
+    </a>
+
+    <a href="/dashboard" class="switch">
+      <small>Уже в системе?</small>
+      <span>Кабинет <svg viewBox="0 0 24 12" width="18" height="10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h21M17 1l5 5-5 5"/></svg></span>
+    </a>
+  </header>
+
+  <main class="auth-main">
+    <section class="auth-card" id="card">
+
+      <div class="hero-icon hero-icon--sm" aria-hidden="true">
+        <div class="hero-icon__tilt">
+          <svg class="hero-icon__svg" viewBox="0 0 360 250">
+            <defs>
+              <linearGradient id="hiRing" gradientUnits="userSpaceOnUse" x1="30" y1="0" x2="330" y2="0">
+                <stop offset="0" stop-color="#c04bff"/>
+                <stop offset=".5" stop-color="#6a6cff"/>
+                <stop offset="1" stop-color="#27d6ff"/>
+              </linearGradient>
+              <linearGradient id="hiCard" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#4aa8ff"/>
+                <stop offset=".55" stop-color="#2a56e8"/>
+                <stop offset="1" stop-color="#1b2fb8"/>
+              </linearGradient>
+              <linearGradient id="hiGloss" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="hiAva" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#4af7ff"/>
+                <stop offset="1" stop-color="#1aa8ff"/>
+              </linearGradient>
+              <radialGradient id="hiGlow">
+                <stop offset="0" stop-color="#4f7bff" stop-opacity=".6"/>
+                <stop offset="1" stop-color="#4f7bff" stop-opacity="0"/>
+              </radialGradient>
+              <clipPath id="hiClip"><rect x="100" y="40" width="160" height="160" rx="30"/></clipPath>
+              <filter id="hiBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"/></filter>
+            </defs>
+
+            <ellipse class="hi-glow" cx="180" cy="130" rx="160" ry="105" fill="url(#hiGlow)"/>
+
+            <!-- орбиты: задняя часть -->
+            <g transform="rotate(-12 180 140)" fill="none" stroke-linecap="round">
+              <path d="M30 140A150 48 0 0 1 330 140" stroke="url(#hiRing)" stroke-opacity=".35" stroke-width="3"/>
+              <path class="orbit" pathLength="100" d="M30 140A150 48 0 0 1 330 140" stroke="url(#hiRing)" stroke-width="5" filter="url(#hiBlur)"/>
+              <path class="orbit orbit--b" pathLength="100" d="M30 140A150 48 0 0 1 330 140" stroke="#fff" stroke-opacity=".9" stroke-width="2"/>
+            </g>
+
+            <!-- карточка -->
+            <g class="px" style="--d:8">
+              <g transform="rotate(-8 180 120)">
+                <g class="bob">
+                  <rect x="100" y="40" width="160" height="160" rx="30" fill="url(#hiCard)" stroke="#7fd0ff" stroke-opacity=".85" stroke-width="2"/>
+                  <rect x="107" y="47" width="146" height="146" rx="24" fill="none" stroke="#fff" stroke-opacity=".16"/>
+                  <path d="M100 70a30 30 0 0 1 30-30h100a30 30 0 0 1 30 30v22c-50 18-110 18-160 0z" fill="url(#hiGloss)"/>
+                  <circle cx="180" cy="112" r="47" fill="#35e8ff" fill-opacity=".16" stroke="#4af7ff" stroke-opacity=".7" stroke-width="2"/>
+                  <circle cx="180" cy="98" r="15" fill="url(#hiAva)"/>
+                  <path d="M155 140c0-14 11-22 25-22s25 8 25 22z" fill="url(#hiAva)"/>
+                  <g clip-path="url(#hiClip)"><rect class="sheen" x="90" y="30" width="34" height="180" fill="#fff" fill-opacity=".2"/></g>
+                </g>
+              </g>
+            </g>
+
+            <!-- орбиты: передняя часть -->
+            <g transform="rotate(-12 180 140)" fill="none" stroke-linecap="round">
+              <path d="M30 140A150 48 0 0 0 330 140" stroke="url(#hiRing)" stroke-opacity=".5" stroke-width="3"/>
+              <path class="orbit orbit--c" pathLength="100" d="M30 140A150 48 0 0 0 330 140" stroke="url(#hiRing)" stroke-width="5" filter="url(#hiBlur)"/>
+              <path class="orbit orbit--d" pathLength="100" d="M30 140A150 48 0 0 0 330 140" stroke="#fff" stroke-opacity=".95" stroke-width="2"/>
+              <path d="M62 152A118 34 0 0 0 298 152" stroke="url(#hiRing)" stroke-opacity=".45" stroke-width="2.5"/>
+            </g>
+
+            <!-- значки -->
+            <g class="px" style="--d:22">
+              <g class="bob bob--2">
+                <g transform="translate(250 18) rotate(8 22 22)">
+                  <rect width="46" height="46" rx="13" fill="#10256e" fill-opacity=".85" stroke="#4fc3ff" stroke-opacity=".85" stroke-width="1.6"/>
+                  <path transform="translate(11 11)" d="M12 2 20 5v6c0 4.7-3.2 8.4-8 10-4.8-1.6-8-5.3-8-10V5z" fill="url(#hiAva)"/>
+                  <path transform="translate(11 11)" d="M8.5 11.5 11 14l4.5-5" fill="none" stroke="#0b1a5a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </g>
+              </g>
+            </g>
+            <g class="px" style="--d:26">
+              <g class="bob bob--3">
+                <g transform="translate(262 162) rotate(-6 22 22)">
+                  <rect width="46" height="46" rx="13" fill="#10256e" fill-opacity=".85" stroke="#4fc3ff" stroke-opacity=".85" stroke-width="1.6"/>
+                  <path transform="translate(10 10)" d="M14 2 5 15h6l-1 9 9-13h-6z" fill="url(#hiAva)"/>
+                </g>
+              </g>
+            </g>
+
+            <!-- искры -->
+            <circle class="spark" cx="62" cy="62" r="2.5" fill="#7fe4ff"/>
+            <circle class="spark spark--2" cx="318" cy="118" r="2" fill="#c68cff"/>
+            <circle class="spark spark--3" cx="44" cy="190" r="2" fill="#7fe4ff"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="title">
+        <span class="line" style="--d:.15s"><span>Подтверждение</span></span>
+        <span class="line" style="--d:.28s"><span><em class="grad-text">email</em></span></span>
+      </h1>
+
+      <div class="status-loading" id="loading"><span class="loader" aria-hidden="true"></span><p>Подтверждаем адрес…</p></div>
+
+      <div class="success" id="success" hidden>
+        <svg class="success__check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" fill="none" stroke="url(#hiRing)" stroke-width="3"/><path d="M25 41l10 10 20-22" fill="none" stroke="#7fe4ff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h2>Email подтверждён!</h2>
+        <p>Спасибо! Адрес почты подтверждён, теперь аккаунт защищён надёжнее.</p>
+        <a href="/dashboard" class="btn-submit btn-submit--link"><span class="btn-submit__label">В личный кабинет</span></a>
+      </div>
+
+      <div class="success success--error" id="invalid" hidden>
+        <svg class="success__check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="34" fill="none" stroke="#ff6b8a" stroke-width="3"/><path d="M28 28l24 24M52 28L28 52" fill="none" stroke="#ff9db3" stroke-width="5" stroke-linecap="round"/></svg>
+        <h2>Ссылка недействительна</h2>
+        <p>Она устарела или уже была использована. Войдите в кабинет, и мы отправим новое письмо.</p>
+        <a href="/dashboard#settings" class="btn-submit btn-submit--link"><span class="btn-submit__label">Открыть настройки</span></a>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="/auth.js"></script>
+</body>
+</html>

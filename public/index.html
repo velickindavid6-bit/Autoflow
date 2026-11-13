@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AutoFlow — автоматизируй свои задачи">
+  <meta property="og:description" content="Платформа для автоматизации рутинных процессов с уведомлениями в Telegram-боте.">
+  <meta property="og:locale" content="ru_RU">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050816">
+  <title>AutoFlow — автоматизируй свои задачи</title>
+  <meta name="description" content="AutoFlow — платформа для автоматизации рутинных задач с уведомлениями в Telegram.">
+  <script src="/js-flag.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- Общий градиент для SVG-иконок -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#9b3dff"/>
+        <stop offset="1" stop-color="#27c4ff"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#hero" class="logo" aria-label="AutoFlow — на главную">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#g)"/></svg>
+        AutoFlow
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Основная навигация">
+        <a href="#hero" class="active">Главная</a>
+        <a href="#features">Возможности</a>
+        <a href="#how">Как это работает</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#contacts">Контакты</a>
+        <a href="/login" class="nav__login">Вход</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="/login" class="img-btn img-btn--login" aria-label="Вход">
+          <img src="/assets/btn-login.png" alt="Вход" width="640" height="165">
+        </a>
+        <a href="/register" class="img-btn img-btn--register" aria-label="Регистрация">
+          <img src="/assets/btn-register.png" alt="Регистрация" width="640" height="175">
+        </a>
+        <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="container hero__grid">
+
+        <div class="hero__text">
+          <div class="badge rise" style="--d:.1s">
+            <i></i> Автоматизация <b></b> Веб-платформа <b></b> Telegram-бот
+          </div>
+
+          <h1>
+            <span class="line" style="--d:.2s"><span>Автоматизируй</span></span>
+            <span class="line" style="--d:.34s"><span><em class="grad-text">свои задачи</em></span></span>
+          </h1>
+
+          <p class="lead rise" style="--d:.55s">
+            AutoFlow — это современная платформа, которая помогает автоматизировать рутинные процессы, управлять задачами и получать уведомления через Telegram-бота.
+          </p>
+
+          <div class="hero__actions rise" style="--d:.7s">
+            <a href="/register" class="btn btn--primary btn--lg">Начать бесплатно <span class="arr">→</span></a>
+            <a href="#features" class="btn btn--ghost btn--lg">Узнать больше</a>
+          </div>
+        </div>
+
+        <!-- Визуал: ноутбук + телефон, собраны на HTML/CSS -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="stage">
+
+            <div class="glow glow--1 layer" data-depth="10"></div>
+            <div class="glow glow--2 layer" data-depth="16"></div>
+            <div class="glow glow--3 layer" data-depth="12"></div>
+
+            <!-- Ноутбук -->
+            <div class="layer layer--laptop" data-depth="14">
+              <div class="float float--a">
+                <div class="laptop">
+                  <div class="laptop__screen">
+                    <div class="dash">
+                      <aside class="dash__side">
+                        <div class="dash__logo">
+                          <svg viewBox="0 0 32 32"><path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#g)"/></svg>
+                          AutoFlow
+                        </div>
+                        <ul>
+                          <li class="on"><i></i>Главная</li>
+                          <li><i></i>Задачи</li>
+                          <li><i></i>Автоматизация</li>
+                          <li><i></i>Уведомления</li>
+                          <li><i></i>Настройки</li>
+                        </ul>
+                      </aside>
+                      <div class="dash__main">
+                        <h4>Привет, Алексей! 👋</h4>
+                        <p class="dash__sub">Ваши задачи и автоматизации работают</p>
+
+                        <div class="stats">
+                          <div class="stat"><b data-count="12">12</b><span>Активных задач</span></div>
+                          <div class="stat"><b data-count="5">5</b><span>Автоматизаций</span></div>
+                          <div class="stat"><b data-count="98" data-suffix="%">98%</b><span>Успешность</span></div>
+                        </div>
+
+                        <h5>Последние действия</h5>
+                        <ul class="acts">
+                          <li><i style="--c:#19c3a0"></i><div><strong>Задача выполнена</strong><small>Сегодня, 14:32</small></div></li>
+                          <li><i style="--c:#2b8bff"></i><div><strong>Уведомление отправлено</strong><small>Сегодня, 12:17</small></div></li>
+                          <li><i style="--c:#f0506e"></i><div><strong>Новая задача создана</strong><small>Сегодня, 10:05</small></div></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="laptop__deck"><span></span></div>
+                  <div class="laptop__lip"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Телефон -->
+            <div class="layer layer--phone" data-depth="26">
+              <div class="float float--b">
+                <div class="phone">
+                  <div class="phone__screen">
+                    <div class="phone__notch"></div>
+                    <div class="phone__bar">
+                      <span class="back">‹</span>
+                      <span class="ava"><svg viewBox="0 0 24 24"><path d="M21 3 2.5 10.2l5.3 1.9 2 6 3-3.3 4.8 3.5L21 3z" fill="#fff"/></svg></span>
+                      <div><strong>AutoFlow Bot</strong><small>бот</small></div>
+                    </div>
+
+                    <div class="chat">
+                      <div class="msg">
+                        Привет, Алексей! 👋<br>У тебя 3 новых уведомления:
+                      </div>
+                      <div class="msg msg--n">
+                        <span class="ok">✓</span>
+                        <div><strong>Задача выполнена</strong><span>Отчёт по проекту</span></div>
+                        <time>14:22</time>
+                      </div>
+                      <div class="msg msg--n">
+                        <span class="ok">✓</span>
+                        <div><strong>Напоминание</strong><span>Встреча в 16:00</span></div>
+                        <time>13:20</time>
+                      </div>
+                      <div class="msg msg--n">
+                        <span class="ok">✓</span>
+                        <div><strong>Новая задача</strong><span>Проверить почту</span></div>
+                        <time>11:45</time>
+                      </div>
+                    </div>
+
+                    <div class="phone__input">
+                      <span>Сообщение…</span>
+                      <button tabindex="-1"><svg viewBox="0 0 24 24"><path d="M21 3 2.5 10.2l5.3 1.9 2 6 3-3.3 4.8 3.5L21 3z" fill="#fff"/></svg></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Значок Telegram -->
+            <div class="layer layer--tg" data-depth="36">
+              <div class="float float--c">
+                <div class="tg">
+                  <svg viewBox="0 0 24 24"><path d="M21.5 3.2 2.6 10.5c-1 .4-.9 1.2-.2 1.4l4.8 1.5 1.9 5.8c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3-14.6c.3-1.2-.4-1.8-1.2-1.4z" fill="#fff"/><path d="m8.4 13.6 9.8-6.2c.5-.3.9-.1.5.2l-7.9 7.2-.3 3.3-2.1-4.5z" fill="#b6d9f2"/></svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ВОЗМОЖНОСТИ ============ -->
+    <section class="section features" id="features">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow">Возможности</span>
+          <h2>Всё, что нужно для автоматизации</h2>
+          <p>Объединяем веб-платформу, автоматизацию и Telegram-бота в одном удобном решении.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card" data-reveal style="--d:0s">
+            <div class="card__icon">
+              <svg viewBox="0 0 32 32" width="30" height="30"><path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#g)"/></svg>
+            </div>
+            <h3>Автоматизация задач</h3>
+            <p>Настраивайте правила и пусть система делает рутинную работу за вас.</p>
+          </article>
+
+          <article class="card" data-reveal style="--d:.1s">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="url(#g)" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M4.5 7.5h15M4.5 16.5h15"/></svg>
+            </div>
+            <h3>Удобная веб-платформа</h3>
+            <p>Управляйте всеми процессами через современный и понятный интерфейс.</p>
+          </article>
+
+          <article class="card" data-reveal style="--d:.2s">
+            <div class="card__icon card__icon--tg">
+              <svg viewBox="0 0 24 24" width="30" height="30"><path d="M21.5 3.2 2.6 10.5c-1 .4-.9 1.2-.2 1.4l4.8 1.5 1.9 5.8c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3-14.6c.3-1.2-.4-1.8-1.2-1.4z" fill="#fff"/></svg>
+            </div>
+            <h3>Telegram-бот</h3>
+            <p>Получайте уведомления, управляйте задачами и следите за прогрессом прямо в Telegram.</p>
+          </article>
+
+          <article class="card" data-reveal style="--d:.3s">
+            <div class="card__icon">
+              <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="url(#g)" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2.5 19.5 5.5v6c0 4.7-3.2 8.6-7.5 10-4.3-1.4-7.5-5.3-7.5-10v-6L12 2.5z"/><path d="M12 7v10" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Надёжность и безопасность</h3>
+            <p>Ваши данные под защитой. Мы используем современные технологии шифрования.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ КАК ЭТО РАБОТАЕТ ============ -->
+    <section class="section how" id="how">
+      <div class="container steps">
+        <div data-reveal>
+          <span class="eyebrow">Как это работает</span>
+          <h2>Всего 3 простых шага</h2>
+          <p class="how__lead">Начать использовать AutoFlow очень просто. Следуйте этим шагам и уже через несколько минут вы сможете автоматизировать свои задачи.</p>
+          <a href="/register" class="btn btn--primary btn--lg how__cta" data-cta>Попробовать бесплатно <span class="arr">→</span></a>
+        </div>
+
+        <ol class="steps__list">
+          <li class="step" data-reveal style="--d:.05s"><a class="step__link" href="/register" data-cta aria-label="Шаг 1: зарегистрируйтесь"></a>
+            <span class="step__num">1</span>
+            <h3>Зарегистрируйтесь</h3>
+            <p>Создайте аккаунт на сайте и войдите в систему.</p>
+          </li>
+          <li class="step__arrow" data-reveal style="--d:.2s" aria-hidden="true"><svg viewBox="0 0 24 12" width="24" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h21M17 1l5 5-5 5"/></svg></li>
+          <li class="step" data-reveal style="--d:.3s"><a class="step__link" href="#features" aria-label="Шаг 2: посмотреть возможности"></a>
+            <span class="step__num">2</span>
+            <h3>Настройте автоматизацию</h3>
+            <p>Выберите нужные задачи и настройте правила.</p>
+          </li>
+          <li class="step__arrow" data-reveal style="--d:.45s" aria-hidden="true"><svg viewBox="0 0 24 12" width="24" height="12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h21M17 1l5 5-5 5"/></svg></li>
+          <li class="step" data-reveal style="--d:.55s"><a class="step__link" href="#pricing" aria-label="Шаг 3: посмотреть тарифы"></a>
+            <span class="step__num">3</span>
+            <h3>Получайте результат</h3>
+            <p>Забудьте о рутине и следите за прогрессом в Telegram.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ ТАРИФЫ ============ -->
+    <section class="section pricing" id="pricing">
+      <div class="container">
+        <div class="section__head" data-reveal>
+          <span class="eyebrow">Тарифы</span>
+          <h2>Выберите свой тариф</h2>
+          <p>Начните бесплатно и переходите на расширенный тариф, когда понадобится больше автоматизаций.</p>
+        </div>
+
+        <div class="plans">
+          <article class="plan card" data-reveal style="--d:0s">
+            <h3>Старт</h3>
+            <p class="plan__for">Чтобы познакомиться с платформой</p>
+            <p class="plan__price"><b>0 ₸</b><span>/ мес</span></p>
+            <ul class="plan__list">
+              <li>До 3 активных автоматизаций</li>
+              <li>Неограниченные задачи</li>
+              <li>Уведомления в кабинете</li>
+              <li>Команды Telegram-бота</li>
+            </ul>
+            <a href="/register?plan=start" class="btn btn--ghost" data-plan>Начать бесплатно</a>
+          </article>
+
+          <article class="plan plan--hot card" data-reveal style="--d:.1s">
+            <span class="plan__badge">Популярный</span>
+            <h3>Про</h3>
+            <p class="plan__for">Для тех, кто работает каждый день</p>
+            <p class="plan__price"><b>4 900 ₸</b><span>/ мес</span></p>
+            <ul class="plan__list">
+              <li>До 25 активных автоматизаций</li>
+              <li>Уведомления в Telegram</li>
+              <li>Приоритетная поддержка</li>
+            </ul>
+            <a href="/register?plan=pro" class="btn btn--primary" data-plan>Выбрать «Про»</a>
+          </article>
+
+          <article class="plan card" data-reveal style="--d:.2s">
+            <h3>Бизнес</h3>
+            <p class="plan__for">Для команд и компаний</p>
+            <p class="plan__price"><b>14 900 ₸</b><span>/ мес</span></p>
+            <ul class="plan__list">
+              <li>До 100 активных автоматизаций</li>
+              <li>Командный доступ (скоро)</li>
+              <li>Выделенная поддержка</li>
+            </ul>
+            <a href="#contacts" class="btn btn--ghost">Связаться с нами</a>
+          </article>
+        </div>
+        <p class="pricing__note" data-reveal>Оплата подключается: деньги пока не списываются, а ограничения тарифов уже действуют.</p>
+      </div>
+    </section>
+
+    <!-- ============ КОНТАКТЫ ============ -->
+    <section class="section contacts" id="contacts">
+      <div class="container contacts__grid">
+        <div data-reveal>
+          <span class="eyebrow">Контакты</span>
+          <h2>Остались вопросы?</h2>
+          <p class="contacts__lead">Напишите нам: расскажем, как AutoFlow поможет автоматизировать вашу рутину, ответим по тарифам и подключению Telegram-бота. Обычно отвечаем в течение рабочего дня.</p>
+          <ul class="contacts__list">
+            <li>Вопросы по возможностям и тарифам</li>
+            <li>Помощь с подключением и настройкой</li>
+            <li>Предложения и пожелания</li>
+          </ul>
+        </div>
+
+        <form class="cform" id="contactForm" novalidate data-reveal style="--d:.1s">
+          <input type="text" id="cWebsite" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <label class="cfld"><span>Имя</span><input id="cName" name="name" type="text" autocomplete="name" maxlength="100" required></label>
+          <p class="cerr" data-for="name" role="alert"></p>
+          <label class="cfld"><span>Email для ответа</span><input id="cEmail" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+          <p class="cerr" data-for="email" role="alert"></p>
+          <label class="cfld"><span>Сообщение</span><textarea id="cMsg" name="message" rows="5" maxlength="2000" required></textarea></label>
+          <p class="cerr" data-for="message" role="alert"></p>
+          <button type="submit" class="btn btn--primary btn--lg cform__btn"><span class="cform__label">Отправить сообщение</span><span class="cform__spin" aria-hidden="true"></span></button>
+          <p class="cform__ok" id="contactOk" role="status" hidden>Спасибо! Сообщение отправлено, мы ответим на указанный email.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ ПОДВАЛ ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#hero" class="logo" aria-label="AutoFlow — наверх">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#g)"/></svg>
+          AutoFlow
+        </a>
+        <p>Платформа автоматизации с уведомлениями в Telegram.</p>
+      </div>
+      <nav aria-label="Продукт"><h4>Продукт</h4>
+        <a href="#features">Возможности</a><a href="#how">Как это работает</a><a href="#pricing">Тарифы</a></nav>
+      <nav aria-label="Аккаунт"><h4>Аккаунт</h4>
+        <a href="/login" data-guest>Вход</a><a href="/register" data-guest>Регистрация</a>
+        <a href="/dashboard" data-user hidden>Личный кабинет</a><a href="/forgot-password" data-guest>Забыли пароль?</a></nav>
+      <nav aria-label="Компания"><h4>Компания</h4>
+        <a href="#contacts">Контакты</a><a href="/terms">Условия использования</a><a href="/privacy">Политика конфиденциальности</a></nav>
+    </div>
+    <div class="container footer__bottom"><span>© <span id="year">2026</span> AutoFlow. Все права защищены.</span><a href="#hero" class="footer__up">Наверх ↑</a></div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

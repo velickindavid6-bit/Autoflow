@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#050816">
+  <title>Политика конфиденциальности — AutoFlow</title>
+  <meta name="description" content="Как AutoFlow обрабатывает и защищает персональные данные.">
+  <script src="/js-flag.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/auth.css">
+</head>
+<body class="auth">
+
+  <!-- Фон: дрейфующие светящиеся пятна с переливом оттенков -->
+  <div class="bg" aria-hidden="true">
+    <i class="bg__blob bg__blob--1"></i>
+    <i class="bg__blob bg__blob--2"></i>
+    <i class="bg__blob bg__blob--3"></i>
+  </div>
+
+  <header class="auth-header">
+    <a href="/" class="logo" aria-label="AutoFlow — на главную">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#b25cff"/>
+            <stop offset="1" stop-color="#27c4ff"/>
+          </linearGradient>
+        </defs>
+        <path d="M19 2 6 18h8l-3 12 15-19h-9l2-9z" fill="url(#lg)"/>
+      </svg>
+      <span>AutoFlow</span>
+    </a>
+
+    <a href="/" class="switch">
+      <small>Вернуться</small>
+      <span>На главную <svg viewBox="0 0 24 12" width="18" height="10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h21M17 1l5 5-5 5"/></svg></span>
+    </a>
+  </header>
+
+  <main class="auth-main">
+    <article class="legal">
+      <h1>Политика конфиденциальности</h1>
+      <p class="legal__date">Редакция от [дата]</p>
+      <aside class="legal__note" role="note">
+        <strong>Черновик-шаблон.</strong> Заполните значения в [квадратных скобках] и покажите документ юристу до публичного запуска:
+        требования к персональным данным и онлайн-платежам зависят от страны и вашей формы бизнеса.
+      </aside>
+
+      <h2>1. Какие данные мы собираем</h2>
+      <ul>
+        <li><strong>Данные аккаунта:</strong> имя и фамилия, email, номер телефона. Пароль мы не храним: в базе лежит только его необратимый хеш.</li>
+        <li><strong>Технические данные сессии:</strong> IP-адрес, тип браузера (user-agent), время входа. Они нужны для безопасности и защиты от подбора пароля.</li>
+        <li><strong>Сообщения из формы «Контакты»:</strong> имя, email и текст обращения.</li>
+        <li><strong>Содержимое кабинета</strong> (задачи, автоматизации): на текущем этапе хранится в вашем браузере, а при переносе на сервер будет храниться в связке с вашим аккаунтом.</li>
+      </ul>
+
+      <h2>2. Зачем мы это делаем</h2>
+      <p>Чтобы создать аккаунт и пускать вас в личный кабинет; подтверждать email и восстанавливать пароль; защищать Сервис от злоупотреблений; отвечать на ваши обращения. Мы не используем данные для рекламы и не продаём их.</p>
+
+      <h2>3. Файлы cookie</h2>
+      <p>Сервис использует одну необходимую cookie — сессионную. Она нужна, чтобы вы оставались в аккаунте, недоступна скриптам страницы (HttpOnly) и удаляется при выходе. Рекламных и аналитических cookie нет.</p>
+
+      <h2>4. Хранение и защита</h2>
+      <p>Пароли хешируются современным алгоритмом, соединение защищено шифрованием (HTTPS), число попыток входа ограничено, ссылки из писем одноразовые и действуют ограниченное время. Данные аккаунта хранятся, пока существует аккаунт. Сессии автоматически истекают через 7–30 дней. Сообщения из формы «Контакты» хранятся [срок].</p>
+      <p>Данные хранятся на серверах: [название хостинга, страна].</p>
+
+      <h2>5. Кому мы передаём данные</h2>
+      <p>Только сервисам, без которых Сервис не работает: почтовому провайдеру для отправки писем ([название]) и хостинг-провайдеру ([название]). Также данные могут быть раскрыты по требованию закона.</p>
+
+      <h2>6. Ваши права</h2>
+      <p>Вы можете в любой момент изменить имя и телефон в разделе «Настройки», а также удалить аккаунт — вместе с ним удаляются данные аккаунта и сессии. По остальным вопросам (получить копию данных, исправить, отозвать согласие) напишите нам: [email для связи].</p>
+
+      <h2>7. Изменения политики</h2>
+      <p>Мы можем обновлять эту политику. Актуальная редакция всегда доступна на этой странице.</p>
+
+      <p class="legal__nav"><a href="/terms">Условия использования →</a></p>
+    </article>
+  </main>
+
+  <script src="/auth.js"></script>
+</body>
+</html>

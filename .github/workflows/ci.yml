@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Автотесты
+        run: npm test
+      - name: Демо-версия (папка docs) актуальна
+        run: |
+          npm run build:demo
+          if [ -n "$(git status --porcelain -- docs)" ]; then
+            echo "Папка docs устарела. Выполните npm run build:demo и закоммитьте результат."
+            git status --porcelain -- docs
+            exit 1
+          fi

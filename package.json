@@ -1,0 +1,17 @@
+{
+  "name": "autoflow",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "description": "AutoFlow: платформа автоматизации задач с Telegram-ботом и тарифами (Node.js, SQLite, без зависимостей)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/*.test.js",
+    "build:demo": "node scripts/build-demo.mjs"
+  }
+}
